@@ -1,6 +1,5 @@
 package com.controllers;
 
-import com.models.Book;
 import com.models.enums.BookType;
 import com.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -46,9 +44,9 @@ public class BookController {
 
     //TODO: Make book page
     @RequestMapping(value = "/find",params = "title")
-    @ResponseBody
-    Book getBookByTitle(@RequestParam("title") String title){
-        return bookService.getBookByTitle(title);
+    public String getBookByTitle(Model model, @RequestParam("title") String title){
+        model.addAttribute("book",bookService.getBookByTitle(title));
+        return "singleBookPage";
     }
 
 

@@ -25,11 +25,15 @@
         <tbody>
             <c:forEach items="${booksList}" var="book" >
                 <tr>
-                    <td><c:out value="${book.title}" /></td>
-                    <td><c:out value="${book.author}" /></td>
-                    <td><c:out value="${book.type}" /></td>
+                    <td> <a href="/books/find?title=${book.title}"> <c:out value="${book.title}" /></a></td>
+                    <td> <a href="/books/find?author=${book.author}"> <c:out value="${book.author}" /></a></td>
+                    <td> <a href="/books/find?type=${book.type}"> <c:out value="${book.type}" /></a></td>
                     <td><c:out value="${book.description}" /></td>
-                    <td><c:out value="${book.groups}" /></td>
+                    <td>
+                    <c:forEach items="${book.groups}" var="bookGroup">
+                        <span><a href="/books/find?group=${bookGroup}"><c:out value="${bookGroup}" /></a>   </span>
+                    </c:forEach>
+                    </td>
                     <td><c:out value="${book.copies}" /></td>
                 </tr>
             </c:forEach>
