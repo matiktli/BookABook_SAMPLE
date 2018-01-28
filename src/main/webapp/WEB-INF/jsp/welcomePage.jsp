@@ -5,12 +5,12 @@
 <head>
     <spring:url value="/resources/css/main.css" var="mainCss" />
     <meta charset="UTF-8">
-    <title>Hello</title>
+    <title><spring:message code="titleName" text="Hello"/></title>
 </head>
 <body>
 <link href="${mainCss}" rel="stylesheet" />
 
-<h1>Hello ${name}</h1>
+<h1><spring:message code="greeting" text="Greetings my friend"/></h1>
 
 </body>
 </html>
