@@ -23,8 +23,15 @@ repositories {
 }
 
 dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
     compile("org.springframework.boot:spring-boot-starter-data-rest")
     compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+    compile('javax.servlet:jstl')
+    compile('org.eclipse.jdt.core.compiler:ecj:4.6.1')
+    compile("org.springframework.boot:spring-boot-starter-tomcat")
+    compile("org.apache.tomcat.embed:tomcat-embed-jasper")
+
+
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 

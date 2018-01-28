@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 @SpringBootApplication
-public class BookABookApp implements CommandLineRunner {
+public class BookABookApp extends SpringBootServletInitializer implements CommandLineRunner {
 
     @Autowired
     private BookRepository bookRepository;
@@ -22,9 +24,16 @@ public class BookABookApp implements CommandLineRunner {
     @Autowired
     public UserRepository userRepository;
 
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(BookABookApp.class);
+    }
+
     public static void main(String[] args){
         SpringApplication.run(BookABookApp.class, args);
     }
+
+
 
     @Override
     public void run(String... args) throws Exception {
@@ -41,4 +50,6 @@ public class BookABookApp implements CommandLineRunner {
         bookRepository.save(new Book(new Book.Builder("Spring 3","Krzys", BookType.AUDIO_BOOK)
                 .description("Third book").groups(new ArrayList<>(Arrays.asList("SMH","GAME"))).copies(5)));
     }
+
+
 }
