@@ -22,12 +22,13 @@ public class UserService {
         userRepository.delete(id);
     }
 
+
     public List<User> getAllUsers(){
         return userRepository.findAll();
     }
 
     public User getUserByEmail(String email){
-        return userRepository.findByEmial(email);
+        return userRepository.findByEmail(email);
     }
 
     public Optional<User> getUserByName(String name){
@@ -41,5 +42,7 @@ public class UserService {
     public Optional<User> getUserByNameAndSurname(String name, String surname){
         return userRepository.findByNameAndSurname(name,surname);
     }
+
+    public User getUserById(String id){ return userRepository.findOne(id);}
 
 }

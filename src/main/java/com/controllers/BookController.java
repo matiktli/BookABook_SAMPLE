@@ -1,13 +1,17 @@
 package com.controllers;
 
+import com.models.Book;
 import com.models.enums.BookType;
 import com.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -42,12 +46,57 @@ public class BookController {
         return "booksList";
     }
 
-    //TODO: Make book page
     @RequestMapping(value = "/find",params = "title")
     public String getBookByTitle(Model model, @RequestParam("title") String title){
         model.addAttribute("book",bookService.getBookByTitle(title));
         return "singleBookPage";
     }
+
+    @RequestMapping(value = "/find",params = "id")
+    public String getBookById(Model model, @RequestParam("id") String id){
+        model.addAttribute("book",bookService.getBookById(id));
+        return "singleBookPage";
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String showAddBookForm(){
+        return "bookAddOrUpdateForm";
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String submitAddBookForm(String title,String author, String type,
+                                    String description, String groups, int copies){
+
+        Book book = new Book(new Book.Builder(title,author,BookType.valueOf(type))
+                .copies(copies)
+                .description(description)
+                .groups(new ArrayList<>(Arrays.asList(groups.split(",")))));
+        bookService.saveBook(book);
+        return "redirect:/books/find?id="+book.getId();
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.GET)
+    public String showUpdateBookForm(Model model, @RequestParam("id") String id){
+        model.addAttribute("book",bookService.getBookById(id));
+        return "bookAddOrUpdateForm";
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String submitUpdateBookForm(String title,String author, String type, String description,
+                                       String groups, int copies, @RequestParam("id") String id){
+
+        Book book = new Book(new Book.Builder(title,author,BookType.valueOf(type))
+                .copies(copies)
+                .description(description)
+                .groups(new ArrayList<>(Arrays.asList(groups.split(",")))));
+        bookService.saveBook(book);
+
+        book.setId(id);
+        bookService.saveBook(book);
+        return "redirect:/books/find?id="+book.getId();
+    }
+
+
 
 
 

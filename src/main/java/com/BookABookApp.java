@@ -49,6 +49,7 @@ public class BookABookApp extends SpringBootServletInitializer implements Comman
                 .description("Second book").groups(new ArrayList<>(Arrays.asList("PC","ART"))).copies(1)));
         bookRepository.save(new Book(new Book.Builder("Spring 3","Krzys", BookType.AUDIO_BOOK)
                 .description("Third book").groups(new ArrayList<>(Arrays.asList("SMH","GAME"))).copies(5)));
+
     }
 
 

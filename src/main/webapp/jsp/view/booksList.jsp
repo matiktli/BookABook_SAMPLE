@@ -7,9 +7,10 @@
     <spring:url value="/resources/css/main.css" var="mainCss" />
     <meta charset="UTF-8">
     <title><spring:message code="titleName"/></title>
+    <link href="${mainCss}" rel="stylesheet" />
 </head>
 <body>
-<link href="${mainCss}" rel="stylesheet" />
+
     <h1><spring:message code="books"/></h1>
     <table id="books" class="tableOfBooks">
         <thead>

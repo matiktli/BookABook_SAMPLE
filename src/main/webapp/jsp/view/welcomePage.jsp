@@ -11,6 +11,5 @@
 <link href="${mainCss}" rel="stylesheet" />
 
 <h1><spring:message code="greeting" text="Greetings my friend"/></h1>
-
 </body>
 </html>

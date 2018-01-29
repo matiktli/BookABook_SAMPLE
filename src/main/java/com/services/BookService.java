@@ -33,6 +33,7 @@ public class BookService {
     public Book getBookByTitle(String title){
         return bookRepository.findByTitle(title);
     }
+    public Book getBookById(String id){ return bookRepository.findOne(id);}
 
     public void saveBook(Book book){
         bookRepository.save(book);

@@ -13,5 +13,8 @@ public interface UserRepository extends MongoRepository<User,String>{
     Optional<User> findByName(@Param("name") String name); //TODO
     Optional<User> findBySurname(@Param("surname") String surname);
     Optional<User> findByNameAndSurname(@Param("name") String name, @Param("surname") String surname);
-    User findByEmial(@Param("email") String email);
+    User findByEmail(@Param("email") String email);
+    Boolean existsByEmail(@Param("email") String email);
+
+
 }

@@ -2,26 +2,43 @@ package com.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.validation.constraints.NotNull;
 
 @Document(collection = "users")
 public class User {
+    private static final String EMAIL_PATTERN =
+            "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                    + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
 
     @Id
     private String id;
     private String name;
     private String surname;
-    private String emial;
+    @Indexed(unique = true)
+    @NotNull
+    private String email;
     @JsonIgnore
     private String password;
 
     public User(){}
 
-    public User(String name, String surname, String emial, String password) {
+    public User(String name, String surname, String email, String password) {
         this.name = name;
         this.surname = surname;
-        this.emial = emial;
+        this.email = email;
         this.password = password;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -40,12 +57,12 @@ public class User {
         this.surname = surname;
     }
 
-    public String getEmial() {
-        return emial;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmial(String emial) {
-        this.emial = emial;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

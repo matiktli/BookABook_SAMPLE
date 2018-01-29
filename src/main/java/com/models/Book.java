@@ -4,6 +4,8 @@ import com.models.enums.BookType;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Document(collection = "books")
@@ -11,14 +13,27 @@ public class Book {
 
     @Id
     private String id;
+    @NotNull @Size(min=5,max=20)
     private String title; //required
+    @NotNull @Size(min=5,max=20)
     private String author; //required
     private BookType type; //required
+    @Size(max=100)
     private String description; //optional
     private List<String> groups; //optional
+    @NotNull
     private int copies; //optional
 
     public Book(){}
+
+    public Book(String title, String author, BookType type, String description, List<String> groups, int copies) {
+        this.title = title;
+        this.author = author;
+        this.type = type;
+        this.description = description;
+        this.groups = groups;
+        this.copies = copies;
+    }
 
     public Book(Builder builder) {
         this.title = builder.title;
@@ -27,6 +42,14 @@ public class Book {
         this.description = builder.description;
         this.groups = builder.groups;
         this.copies = builder.copies;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTitle() {
