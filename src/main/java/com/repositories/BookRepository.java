@@ -16,7 +16,7 @@ public interface BookRepository extends MongoRepository<Book,String>{
     List<Book> findBookByGroupsContains(@Param("group") List<String> group);
 
     Book findByTitle(@Param("title") String title);
-
+    List<Book> findByTitleOrAuthor(String title,String author);
 
 
 }

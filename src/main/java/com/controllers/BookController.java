@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,9 +23,24 @@ public class BookController {
     private BookService bookService;
 
     @RequestMapping("/all")
-    public String getAllBooks(Model model) {
-        model.addAttribute("booksList",bookService.getAllBooks());
-        return "booksList";
+    public ModelAndView getAllBooks(ModelAndView model) {
+        model.addObject("booksList",bookService.getAllBooks());
+        model.setViewName("booksList");
+        return model;
+    }
+
+    @RequestMapping(value="/findForBook",method = RequestMethod.GET)
+    public ModelAndView showFindForBookForm(ModelAndView model){
+        model.setViewName("bookFinderPage");
+        return model;
+    }
+
+    @RequestMapping(value = "/findForBook",method = RequestMethod.POST)
+    public ModelAndView responseFinderForBook(String finderInput){
+        ModelAndView model = new ModelAndView();
+        model.addObject("booksList",bookService.getBooksByTitleOrAuthor(finderInput,finderInput));
+        model.setViewName("booksList");
+        return model;
     }
 
     @RequestMapping(value = "/find",params = "author")

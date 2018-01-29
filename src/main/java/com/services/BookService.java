@@ -46,4 +46,8 @@ public class BookService {
     public void deleteBook(String id){
         bookRepository.delete(id);
     }
+
+    public List<Book> getBooksByTitleOrAuthor(String title,String author){
+        return bookRepository.findByTitleOrAuthor(title, author);
+    }
 }
