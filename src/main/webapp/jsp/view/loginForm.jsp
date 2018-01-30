@@ -12,7 +12,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputEmail"><spring:message code="user.form.email" /></label>
-            <input type="text" class="form-control" id="inputEmail" name="username" placeholder="<spring:message code="user.form.email"  />">
+            <input type="email" class="form-control" id="inputEmail" name="email" placeholder="<spring:message code="user.form.email"  />">
         </div>
         <div class="form-group col-md-6">
             <label for="inputPassword4"><spring:message code="user.form.password"/></label>
