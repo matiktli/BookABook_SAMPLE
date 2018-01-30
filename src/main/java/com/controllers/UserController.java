@@ -53,7 +53,7 @@ public class UserController{
         return "redirect:/user/find?id="+user.getId();
     }
 
-    @RequestMapping(value="login",method = RequestMethod.GET)
+    @RequestMapping(value="/login",method = RequestMethod.GET)
     public String showLoginForm(){
         return "loginForm";
     }
