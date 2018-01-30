@@ -5,9 +5,13 @@
 <tiles-definitions>
 
 	<definition name="mainLayout" template="/jsp/layout/main.jsp">
-		<put-attribute name="header" value="/jsp/layout/headerMenu.jsp" />
+		<put-attribute name="header" value="headerMenu" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/jsp/layout/footer.jsp" />
+	</definition>
+
+	<definition name="headerMenu" template="/jsp/layout/headerMenu.jsp">
+		<put-attribute name="search" value="/jsp/view/bookFinderPage.jsp" />
 	</definition>
 
 	<definition name="welcomePage" extends="mainLayout">
@@ -22,6 +26,10 @@
 		<put-attribute name="body" value="/jsp/view/booksList.jsp" />
 	</definition>
 
+	<definition name="singleBookPage" extends="mainLayout">
+		<put-attribute name="body" value="/jsp/view/singleBookPage.jsp" />
+	</definition>
+
 	<definition name="loginForm" extends="mainLayout">
 		<put-attribute name="body" value="/jsp/view/loginForm.jsp" />
 	</definition>
@@ -30,8 +38,12 @@
 		<put-attribute name="body" value="/jsp/view/userAddOrUpdateForm.jsp" />
 	</definition>
 
-	<definition name="singleBookPage" extends="mainLayout">
-		<put-attribute name="body" value="/jsp/view/singleBookPage.jsp" />
+	<definition name="singleUserPage" extends="mainLayout">
+		<put-attribute name="body" value="/jsp/view/singleUserPage.jsp" />
+	</definition>
+
+	<definition name="bookForm" extends="mainLayout">
+		<put-attribute name="body" value="/jsp/view/bookAddOrUpdateForm.jsp" />
 	</definition>
 
 </tiles-definitions>

@@ -76,7 +76,7 @@ public class BookController {
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String showAddBookForm(){
-        return "bookAddOrUpdateForm";
+        return "bookForm";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -92,9 +92,9 @@ public class BookController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
-    public String showUpdateBookForm(Model model, @RequestParam("id") String id){
-        model.addAttribute("book",bookService.getBookById(id));
-        return "bookAddOrUpdateForm";
+    public String showUpdateBookForm(ModelAndView model, @RequestParam("id") String id){
+        model.addObject("book",bookService.getBookById(id));
+        return "bookForm";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)

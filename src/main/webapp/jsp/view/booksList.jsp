@@ -1,18 +1,15 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
-
-<html lang="en">
-<head>
-    <spring:url value="/resources/css/main.css" var="mainCss" />
-    <meta charset="UTF-8">
-    <title><spring:message code="titleName"/></title>
-    <link href="${mainCss}" rel="stylesheet" />
-</head>
 <body>
 
     <h1><spring:message code="books"/></h1>
-    <table id="books" class="tableOfBooks">
+    <hr>
+    <form:form method="GET" action="/books/add">
+        <button type="submit" class="btn btn-success"><spring:message code="addBook"/></button>
+    </form:form>
+    <table id="books" class="table table-striped">
         <thead>
             <tr>
                 <th style="width: 150px;"><spring:message code="book.table.title"/></th>

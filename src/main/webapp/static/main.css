@@ -21,7 +21,6 @@ h1{
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    width: 15%;
 }
 
 /* Change background on mouse-over */
@@ -33,4 +32,17 @@ h1{
 /* Main content */
 main {
     margin-top: 30px; /* Add a top margin to avoid content overlay */
+}
+
+#footer {
+    height: 100px;
+    margin-top: -50px;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    clear:both;
+}
+
+.findMenuBar{
+    padding: 10px;
 }

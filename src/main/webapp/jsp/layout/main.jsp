@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Spring Boot with Apache Tiles</title>
+	<title>BookABook</title>
 	<spring:url value="/bootstrap.min.css" var="mainCss" />
 	<link href="${mainCss}" rel="stylesheet" />
 </head>

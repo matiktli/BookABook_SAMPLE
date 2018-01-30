@@ -31,7 +31,7 @@ public class UserController{
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String showRegistrationForm(){
-        return "userAddOrUpdateForm";
+        return "registerForm";
     }
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)

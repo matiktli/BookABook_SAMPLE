@@ -4,36 +4,32 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<head>
-    <spring:url value="/resources/css/main.css" var="mainCss" />
-    <meta charset="UTF-8">
-    <title><spring:message code="titleName"/></title>
-</head>
+
 <body>
-<link href="${mainCss}" rel="stylesheet" />
-    <h1><spring:message code="add"/> <spring:message code="user"/></h1>
+    <h1><spring:message code="user.registration"/></h1>
+    <hr>
     <form:form method="POST" action="/user/register">
-        <table>
-            <tr>
-                <td><spring:message code="user.form.name"/></td>
-                <td><input type="text" name="name" value="${user.name}"/></td>
-            </tr>
-            <tr>
-                <td><spring:message code="user.form.surname"/></td>
-                <td> <input type="text" name="surname" value="${user.surname}"/></td>
-            </tr>
-            <tr>
-                <td><spring:message code="user.form.email"/></td>
-                <td><input type="text" name="email" value="${user.email}"/></td>
-            </tr>
-            <tr>
-                <td><spring:message code="user.form.password"/></td>
-                <td><input type="text" name="password" value=""/></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value=<spring:message code="submit" /> /></td>
-            </tr>
-        </table>
-    </form:form>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputEmail4"><spring:message code="user.form.name" /></label>
+            <input type="text" class="form-control" id="inputEmail4" name="name" placeholder="<spring:message code="user.form.name"  />">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputPassword4"><spring:message code="user.form.surname" /></label>
+            <input type="text" class="form-control" id="inputSurname" name="surname" placeholder="<spring:message code="user.form.surname" />">
+        </div>
+    </div>
+    <div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="inputEmail"><spring:message code="user.form.email" /></label>
+        <input type="email" class="form-control" id="inputEmail" name="email" placeholder="<spring:message code="user.form.email"  />">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="inputPassword4"><spring:message code="user.form.password"/></label>
+        <input type="password" class="form-control" name="password" id="inputPassword4" placeholder="<spring:message code="user.form.password" />">
+    </div>
+    </div>
+    <button type="submit" class="btn btn-success"><spring:message code="user.registration"/></button>
+</form:form>
 </body>
 </html>
