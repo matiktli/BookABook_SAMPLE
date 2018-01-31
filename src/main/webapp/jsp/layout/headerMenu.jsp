@@ -9,7 +9,6 @@
     <a href="/home"><spring:message code="home"   /></a>
     <a href="/books/all"><spring:message code="books"   /></a>
     <a href="/user/login"><spring:message code="login"   /></a>
-    <a href="/user/register"><spring:message code="register"   /></a>
     <div class="findMenuBar"><tiles:insertAttribute name="search" flush="true"/></div>
 </div>
 </body>

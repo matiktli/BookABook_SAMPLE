@@ -17,27 +17,25 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsService userDetailsService;
-    // roles admin allow to access /admin/**
-    // roles user allow to access /user/**
-    // custom 403 access denied handler
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/", "/home","/*.css/**").permitAll()
+                .antMatchers("/", "/home","/*.css/**","/user/register","/error").permitAll()
                 .antMatchers("/books/**").hasAnyAuthority("USER")
                 .anyRequest().fullyAuthenticated()
                 .and()
                 .formLogin()
                 .loginPage("/user/login")
                 .usernameParameter("email")
+                .passwordParameter("password")
+                .successForwardUrl("/home")
                 .permitAll()
                 .and()
                 .logout()
                 .permitAll();
     }
 
-    // create two users, admin and user
     @Override
     public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder.userDetailsService(userDetailsService);
