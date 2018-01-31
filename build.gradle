@@ -31,7 +31,6 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-tomcat")
     compile("org.apache.tomcat.embed:tomcat-embed-jasper")
     compile 'org.apache.tiles:tiles-jsp:3.0.5'
-
     compile("org.springframework.boot:spring-boot-starter-security")
 
 

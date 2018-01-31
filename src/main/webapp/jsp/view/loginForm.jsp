@@ -9,7 +9,7 @@
 <hr>
 <!--<div class="alert alert-danger" role="alert"><strong>${error}</strong></div>-->
 
-<form:form method="POST" action="/user/login" id="logForm">
+<form:form method="POST" action="/user/perform_login" id="logForm">
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputEmail"><spring:message code="user.form.email" /></label>

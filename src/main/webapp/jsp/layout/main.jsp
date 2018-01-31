@@ -6,6 +6,7 @@
 	<title>BookABook</title>
 	<spring:url value="/bootstrap.min.css" var="mainCss" />
 	<link href="${mainCss}" rel="stylesheet" />
+
 </head>
 <body>
 <div class="container" style="margin: 50px">

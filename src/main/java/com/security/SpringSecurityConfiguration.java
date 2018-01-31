@@ -21,12 +21,12 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/", "/home","/*.css/**","/user/register","/error").permitAll()
-                .antMatchers("/books/**").hasAnyAuthority("USER")
+                .antMatchers("/", "/home","/*.css/**","/user/register","user/perform_login","/error").permitAll()
+                .antMatchers("/books/*").hasAnyAuthority("USER")
                 .anyRequest().fullyAuthenticated()
                 .and()
                 .formLogin()
-                .loginPage("/user/login")
+                .loginPage("/user/perform_login")
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .successForwardUrl("/home")

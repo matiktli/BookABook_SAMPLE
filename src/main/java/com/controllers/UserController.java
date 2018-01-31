@@ -46,9 +46,7 @@ public class UserController{
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     public String submitRegistrationForm(User user, HttpServletRequest request) throws ServletException {
         userService.addUser(user);
-        //loging after create
         request.login(user.getEmail(),user.getPassword());
-
         return "redirect:/home";
     }
 
@@ -66,16 +64,18 @@ public class UserController{
     }
 
 
-    @RequestMapping(value="/login",method = RequestMethod.GET)
-    public ModelAndView showLoginForm(@RequestParam Optional<String> error){
+    @RequestMapping(value="/perform_login",method = RequestMethod.GET)
+    public String showLoginForm(@RequestParam Optional<String> error){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("loginForm");
         if(!error.equals(Optional.empty())) {
             modelAndView.addObject("error", error);
 
         }
-        return modelAndView;
+
+        return "loginForm";
     }
+
 
 
 
