@@ -10,7 +10,8 @@
 <body>
 <link href="${mainCss}" rel="stylesheet" />
 
-<h1><spring:message code="greeting" text="Greetings my friend"/></h1>
+<h1><spring:message code="greeting" /> </h1>
+<h1>${currentUser}</h1>
 <hr>
 </body>
 </html>

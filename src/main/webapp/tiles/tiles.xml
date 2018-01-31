@@ -46,4 +46,8 @@
 		<put-attribute name="body" value="/jsp/view/bookAddOrUpdateForm.jsp" />
 	</definition>
 
+	<definition name="error" extends="mainLayout">
+		<put-attribute name="body" value="/jsp/view/error.jsp" />
+	</definition>
+
 </tiles-definitions>

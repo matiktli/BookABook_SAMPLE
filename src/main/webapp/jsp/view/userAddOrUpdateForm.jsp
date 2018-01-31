@@ -6,7 +6,7 @@
 <html lang="en">
 
 <body>
-    <h1><spring:message code="user.registration"/></h1>
+    <h1><spring:message code="user.register"/></h1>
     <hr>
     <form:form method="POST" action="/user/register">
     <div class="form-row">
@@ -29,7 +29,7 @@
         <input type="password" class="form-control" name="password" id="inputPassword4" placeholder="<spring:message code="user.form.password" />">
     </div>
     </div>
-    <button type="submit" class="btn btn-success"><spring:message code="user.registration"/></button>
+    <button type="submit" class="btn btn-success"><spring:message code="user.register"/></button>
 </form:form>
 </body>
 </html>

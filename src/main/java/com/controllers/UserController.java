@@ -3,11 +3,17 @@ package com.controllers;
 import com.models.User;
 import com.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/user")
@@ -15,6 +21,9 @@ public class UserController{
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    protected AuthenticationManager authenticationManager;
 
 
     @RequestMapping(value = "/find",params = "email")
@@ -35,9 +44,12 @@ public class UserController{
     }
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
-    public String submitRegistrationForm(User user){
+    public String submitRegistrationForm(User user, HttpServletRequest request) throws ServletException {
         userService.addUser(user);
-        return "redirect:/user/find?id="+user.getId();
+        //loging after create
+        request.login(user.getEmail(),user.getPassword());
+
+        return "redirect:/home";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
@@ -53,28 +65,22 @@ public class UserController{
         return "redirect:/user/find?id="+user.getId();
     }
 
-    @RequestMapping(value="login",method = RequestMethod.GET)
-    public String showLoginForm(){
-        return "loginForm";
+
+    @RequestMapping(value="/login",method = RequestMethod.GET)
+    public ModelAndView showLoginForm(@RequestParam Optional<String> error){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("loginForm");
+        if(!error.equals(Optional.empty())) {
+            modelAndView.addObject("error", error);
+
+        }
+        return modelAndView;
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(String email,String password){
-       try {
-           User loggingInUser = userService.getUserByEmail(email);
-           if (loggingInUser.getPassword().equals(password)) {
-                return "redirect:/user/find?id="+loggingInUser.getId();
-           }
-           else{
-               return "redirect:/user/login";
-           }
 
-       }
-       catch (Exception e){
-           return "redirect:/user/login";
 
-       }
-    }
+
+
 
 
 }

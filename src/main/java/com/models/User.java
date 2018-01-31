@@ -1,6 +1,7 @@
 package com.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.models.enums.Role;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,10 +10,6 @@ import javax.validation.constraints.NotNull;
 
 @Document(collection = "users")
 public class User {
-    private static final String EMAIL_PATTERN =
-            "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                    + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-
 
     @Id
     private String id;
@@ -23,6 +20,7 @@ public class User {
     private String email;
     @JsonIgnore
     private String password;
+    private String role= Role.USER.name();
 
     public User(){}
 
@@ -71,5 +69,23 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", role='" + role + '\'' +
+                '}';
     }
 }
