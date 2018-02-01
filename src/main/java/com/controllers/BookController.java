@@ -36,12 +36,9 @@ public class BookController {
     }
 
     @RequestMapping(value = "/findForBook",method = RequestMethod.POST)
-    public ModelAndView responseFinderForBook(ModelAndView model, @RequestParam("finderInput") String finderInput){
-        model.getModel().clear();
-        model.addObject("booksList",bookService.getBooksByTitleOrAuthor(finderInput,finderInput));
-        model.setViewName("booksList");
-
-        return model;
+    public String responseFinderForBook(Model model,@RequestParam("finderInput") String finderInput){
+        model.addAttribute("booksList",bookService.getBooksByTitleOrAuthor(finderInput,finderInput));
+        return "booksList";
     }
 
     @RequestMapping(value = "/find",params = "author")
