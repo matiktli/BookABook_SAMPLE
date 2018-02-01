@@ -7,7 +7,6 @@
 
 <h1><spring:message code="user.login"/></h1>
 <hr>
-<!--<div class="alert alert-danger" role="alert"><strong>${error}</strong></div>-->
 
 <form:form method="POST" action="/user/perform_login" id="logForm">
     <div class="form-row">
@@ -25,7 +24,7 @@
 <form id="noForm" method="GET" action="/user/register"></form>
 <div>
     <button form="logForm" type="submit" class="btn btn-success"><spring:message code="user.login"/></button>
-     <small>  /  </small>
+     <small>  </small>
     <button form="noForm" type="submit" class="btn btn-success"><spring:message code="user.register"/></button>
 
 </div>

@@ -9,7 +9,7 @@
 	<spring:url value="/bootsrap.js" var="mainJs" />
 </head>
 <body>
-<div class="container" style="margin: 50px">
+<div class="container"  style="margin: 0px">
 	<tiles:insertAttribute name="header" />
 	<div class="container" style="margin-top: 20px">
 	<tiles:insertAttribute name="body" />

@@ -32,7 +32,10 @@
                         <span><a class="text-success" href="/books/find?group=${bookGroup}"><c:out value="${bookGroup}" /></a>   </span>
                     </c:forEach>
                     </td>
-                    <td ><c:out value="${book.copies}" /></td>
+                    <td ><c:out value="${book.copies}" />
+                        <button type="submit" class="btn btn-success">TAKE IT</button>
+                    </td>
+
                 </tr>
             </c:forEach>
         </tbody>
