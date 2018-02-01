@@ -1,1 +1,1 @@
-<div class="footer">Made by matikitli</div>
+<div>Made by matikitli</div>

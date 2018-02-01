@@ -4,15 +4,27 @@
 <html>
 <head>
 	<title>BookABook</title>
-	<spring:url value="/bootstrap.min.css" var="mainCss" />
+	<spring:url value="/bootstrap.css" var="mainCss" />
 	<link href="${mainCss}" rel="stylesheet" />
-
+	<spring:url value="/bootsrap.js" var="mainJs" />
 </head>
 <body>
 <div class="container" style="margin: 50px">
 	<tiles:insertAttribute name="header" />
+	<div class="container" style="margin-top: 20px">
 	<tiles:insertAttribute name="body" />
-	<tiles:insertAttribute name="footer" />
+	</div>
+
 </div>
 </body>
+<footer class="footer" style="position: absolute;
+     right: 0;
+     bottom: 0;
+     left: 0;
+     padding: 1rem;
+     background-color: #efefef;
+     text-align: center;">
+		<tiles:insertAttribute name="footer" />
+
+</footer>
 </html>
