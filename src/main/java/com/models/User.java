@@ -7,6 +7,9 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Document(collection = "users")
 public class User {
@@ -21,6 +24,7 @@ public class User {
     @JsonIgnore
     private String password;
     private String role= Role.USER.name();
+    private List<Book> userBooks;
 
     public User(){}
 
@@ -29,6 +33,7 @@ public class User {
         this.surname = surname;
         this.email = email;
         this.password = password;
+        this.userBooks=new ArrayList<>();
     }
 
     public String getId() {
@@ -79,5 +84,26 @@ public class User {
         this.role = role;
     }
 
+    public List<Book> getUserBooks() {
+        return userBooks;
+    }
 
+    public void setUserBooks(List<Book> userBooks) {
+        this.userBooks = userBooks;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) &&
+                Objects.equals(email, user.email);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, email);
+    }
 }

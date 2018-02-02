@@ -33,10 +33,7 @@
             <label for="inputDescription"><spring:message code="book.table.description" /></label>
             <input type="text" class="form-control is-valid" id="inputDescription" name="description" placeholder="<spring:message code="book.table.description" />" required>
         </div>
-        <div class="form-group">
-            <label for="inputCopies"><spring:message code="book.table.copies" /></label>
-            <input type="number" class="form-control is-valid" id="inputCopies" name="copies" required>
-        </div>
+
 
 
     </div>

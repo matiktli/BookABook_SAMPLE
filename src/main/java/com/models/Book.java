@@ -1,12 +1,14 @@
 package com.models;
 
 import com.models.enums.BookType;
+import com.models.enums.StatusType;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
+import java.util.Objects;
 
 @Document(collection = "books")
 public class Book {
@@ -21,18 +23,16 @@ public class Book {
     @Size(max=100)
     private String description; //optional
     private List<String> groups; //optional
-    @NotNull
-    private int copies; //optional
+    private StatusType status=StatusType.FREE;
 
     public Book(){}
 
-    public Book(String title, String author, BookType type, String description, List<String> groups, int copies) {
+    public Book(String title, String author, BookType type, String description, List<String> groups) {
         this.title = title;
         this.author = author;
         this.type = type;
         this.description = description;
         this.groups = groups;
-        this.copies = copies;
     }
 
     public Book(Builder builder) {
@@ -41,7 +41,6 @@ public class Book {
         this.type = builder.type;
         this.description = builder.description;
         this.groups = builder.groups;
-        this.copies = builder.copies;
     }
 
     public String getId() {
@@ -72,10 +71,34 @@ public class Book {
         return groups;
     }
 
-    public int getCopies() {
-        return copies;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setType(BookType type) {
+        this.type = type;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setGroups(List<String> groups) {
+        this.groups = groups;
+    }
+
+    public StatusType getStatus() {
+        return status;
+    }
+
+    public Book setStatus(StatusType status) {
+        this.status = status;
+        return this;
+    }
 
     public static class Builder{
         private final String title;
@@ -83,7 +106,7 @@ public class Book {
         private final BookType type;
         private String description;
         private List<String> groups;
-        private int copies;
+        private StatusType status;
 
         public Builder(String title, String author, BookType type) {
             this.title = title;
@@ -101,12 +124,39 @@ public class Book {
             return this;
         }
 
-        public Builder copies(int copies){
-            this.copies=copies;
+        public Builder status(StatusType status){
+            this.status=status;
             return this;
         }
+
     }
 
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", type=" + type +
+                ", description='" + description + '\'' +
+                ", groups=" + groups +
+                ", status=" + status +
+                '}';
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Objects.equals(id, book.id) &&
+                Objects.equals(title, book.title);
+    }
 
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, title);
+    }
 }
+
