@@ -9,7 +9,6 @@
 
 <form:form method="GET" id="editProfile" action="/user/update?id=${currentUser.id}">
     <button type="submit" form="editProfile" class="btn btn-success"><spring:message code="book.edit"/></button>
-    (${currentUser.id})
 </form:form>
 
 <hr>
@@ -43,8 +42,8 @@
                 </td>
                 <td>
 
-                    <form:form action="/books/returning?id=${book.id}">
-                        <button type="submit" class="btn btn-success"><spring:message code="book.table.return"/></button>
+                    <form:form id="returnForm" action="/books/returning?id=${book.id}">
+                        <button type="submit" form="returnForm" class="btn btn-success"><spring:message code="book.table.return"/></button>
                     </form:form>
 
                 </td>
