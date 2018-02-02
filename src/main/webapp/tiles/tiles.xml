@@ -26,8 +26,8 @@
 		<put-attribute name="body" value="/jsp/view/booksList.jsp" />
 	</definition>
 
-	<definition name="userAddOrUpdateForm" extends="mainLayout">
-		<put-attribute name="body" value="/jsp/view/userAddOrUpdateForm.jsp" />
+	<definition name="updateForm" extends="mainLayout">
+		<put-attribute name="body" value="/jsp/view/userUpdateForm.jsp" />
 	</definition>
 
 	<definition name="singleBookPage" extends="mainLayout">
@@ -39,7 +39,7 @@
 	</definition>
 
 	<definition name="registerForm" extends="mainLayout">
-		<put-attribute name="body" value="/jsp/view/userAddOrUpdateForm.jsp" />
+		<put-attribute name="body" value="/jsp/view/userRegisterForm.jsp" />
 	</definition>
 
 	<definition name="singleUserPage" extends="mainLayout">

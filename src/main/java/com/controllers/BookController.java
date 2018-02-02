@@ -6,6 +6,7 @@ import com.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -88,15 +89,15 @@ public class BookController {
         return "redirect:/books/find?id="+book.getId();
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.GET)
-    public String showUpdateBookForm(ModelAndView model, @RequestParam("id") String id){
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+    public String showUpdateBookForm(ModelAndView model, @PathVariable("id") String id){
         model.addObject("book",bookService.getBookById(id));
         return "bookForm";
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     public String submitUpdateBookForm(String title,String author, String type, String description,
-                                       String groups, @RequestParam("id") String id){
+                                       String groups, @PathVariable("id") String id){
 
         Book book = new Book(new Book.Builder(title,author,BookType.valueOf(type))
                 .description(description)

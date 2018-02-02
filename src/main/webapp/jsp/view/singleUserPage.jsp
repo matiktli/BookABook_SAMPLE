@@ -7,9 +7,10 @@
 <h1><spring:message code="user"/></h1>
 <hr>
 
-<form:form method="GET" id="editProfile" action="/user/update?id=${currentUser.id}">
+<form:form method="GET" id="editProfile" action="/user/update/${user.id}">
     <button type="submit" form="editProfile" class="btn btn-success"><spring:message code="book.edit"/></button>
 </form:form>
+
 
 <hr>
 <ul>

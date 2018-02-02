@@ -3,9 +3,11 @@ package com.controllers;
 import com.models.User;
 import com.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,17 +52,26 @@ public class UserController{
         return "redirect:/home";
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.GET)
-    public String showUpdateForm(@RequestParam("id") String id){
-        //model.addAttribute("user",userService.getUserById(id));
-        System.out.println("ID:" + id);
-        return "registerForm";
+
+    //TODO: !!
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+    public ModelAndView showUpdateForm(@PathVariable("id") String id){
+        ModelAndView model = new ModelAndView();
+        model.addObject("user",userService.getUserById(id));
+        model.setViewName("updateForm");
+        return model;
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String submitUpdateForm(User user,@RequestParam("id") String id){
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    public String submitUpdateForm(HttpServletRequest request, String name, String surname, String password, @PathVariable("id") String id) throws ServletException {
+        User user = userService.getUserById(id);
+        user.setName(name);
+        user.setPassword(password);
+        user.setSurname(surname);
         user.setId(id);
         userService.saveUser(user);
+        request.logout();
+        request.login(user.getEmail(),password);
         return "redirect:/user/find?id="+user.getId();
     }
 
@@ -77,6 +88,10 @@ public class UserController{
         return "loginForm";
     }
 
+    @RequestMapping(value = "/logout")
+    public void logout(HttpServletRequest request) throws ServletException {
+        request.logout();
+    }
 
 
 

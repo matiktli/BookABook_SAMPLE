@@ -15,7 +15,7 @@
                     <spring:message code="books"/>
                 </button>
             </div>
-            <div class="col-sm">
+            <div class="col-sm form-inline">
                 <c:if test="${empty currentUser}">
                     <button class="btn btn-outline-success" onclick="location.href='/user/perform_login'">
                         <spring:message code="login"/>
@@ -25,8 +25,18 @@
                     <button class="btn btn-outline-success" onclick="location.href='/user/find?email=${currentUser.email}'">
                         ${currentUser.name}
                     </button>
+
                 </c:if>
             </div>
+            <c:if  test="${not empty currentUser}">
+
+                <div class="col-sm">
+                    <form:form id="logout" action="/logout">
+                        <button class="btn btn-outline-success" type="submit" form="logout"><spring:message code="user.logout"/></button>
+                    </form:form>
+                </div>
+            </c:if>
+
             <div class="col-sm">
                 <form:form method="POST" action="/books/findForBook" id="finderForm">
                     <input class="form-control" type="text" name="finderInput" placeholder=<spring:message code="search"  />>
@@ -34,6 +44,10 @@
             </div>
             <div class="col-sm">
                 <button class="btn btn-outline-success" type="submit" form="finderForm"><spring:message code="search"  /></button>
+            </div>
+            <div class="col-sm">
+                <img src="http://www.emmebiesse.net/wp-content/uploads/2008/03/icon.png" width="40" height="40" onclick="location.href='/home?lang=en'"/>
+                <img src="https://cdn3.iconfinder.com/data/icons/flags-circle/100/Poland-512.png" width="40" height="40" onclick="location.href='/home?lang=pl'"/>
             </div>
 
         </div>

@@ -12,21 +12,21 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputEmail4"><spring:message code="user.form.name" /></label>
-            <input type="text" class="form-control" id="inputEmail4" name="name" placeholder="<spring:message code="user.form.name"  />">
+            <input type="text" class="form-control" id="inputEmail4" name="name" placeholder="<spring:message code="user.form.name"  />" required>
         </div>
         <div class="form-group col-md-6">
             <label for="inputPassword4"><spring:message code="user.form.surname" /></label>
-            <input type="text" class="form-control" id="inputSurname" name="surname" placeholder="<spring:message code="user.form.surname" />">
+            <input type="text" class="form-control" id="inputSurname" name="surname" placeholder="<spring:message code="user.form.surname" />" required>
         </div>
     </div>
     <div class="form-row">
     <div class="form-group col-md-6">
         <label for="inputEmail"><spring:message code="user.form.email" /></label>
-        <input type="email" class="form-control" id="inputEmail" name="email" placeholder="<spring:message code="user.form.email"  />">
+        <input type="email" class="form-control" id="inputEmail" name="email" placeholder="<spring:message code="user.form.email"  />" required>
     </div>
     <div class="form-group col-md-6">
         <label for="inputPassword4"><spring:message code="user.form.password"/></label>
-        <input type="password" class="form-control" name="password" id="inputPassword4" placeholder="<spring:message code="user.form.password" />">
+        <input type="password" class="form-control" name="password" id="inputPassword4" placeholder="<spring:message code="user.form.password" />" required>
     </div>
     </div>
     <button type="submit" class="btn btn-success"><spring:message code="user.register"/></button>

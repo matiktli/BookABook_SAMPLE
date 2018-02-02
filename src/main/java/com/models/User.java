@@ -24,7 +24,7 @@ public class User {
     @JsonIgnore
     private String password;
     private String role= Role.USER.name();
-    private List<Book> userBooks;
+    private List<Book> userBooks=new ArrayList<>();
 
     public User(){}
 
@@ -33,7 +33,6 @@ public class User {
         this.surname = surname;
         this.email = email;
         this.password = password;
-        this.userBooks=new ArrayList<>();
     }
 
     public String getId() {

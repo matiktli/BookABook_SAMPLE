@@ -1,7 +1,7 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
-<html>
+<html style="width: 100%">
 <head>
 	<title>BookABook</title>
 	<spring:url value="/bootstrap.css" var="mainCss" />

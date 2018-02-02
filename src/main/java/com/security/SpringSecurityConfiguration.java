@@ -33,6 +33,8 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .logout()
+                .logoutSuccessUrl("/")
+                .deleteCookies()
                 .permitAll();
     }
 

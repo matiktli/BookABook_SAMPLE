@@ -39,7 +39,7 @@
         <label class="form-control" id="descLabel">${book.description}</label>
     </div>
     <div>
-        <form:form method="GET" action="/books/update?id=${book.id}">
+        <form:form method="GET" action="/books/update/${book.id}">
             <button type="submit" class="btn btn-success"><spring:message code="book.edit"/></button>
         </form:form>
     </div>

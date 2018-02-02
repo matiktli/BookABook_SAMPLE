@@ -20,10 +20,7 @@ import java.util.Arrays;
 public class BookABookApp extends SpringBootServletInitializer implements CommandLineRunner {
 
     @Autowired
-    private BookRepository bookRepository;
-
-    @Autowired
-    public UserRepository userRepository;
+    DatabaseInitializer databaseInitializer;
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
@@ -34,23 +31,9 @@ public class BookABookApp extends SpringBootServletInitializer implements Comman
         SpringApplication.run(BookABookApp.class, args);
     }
 
-
-
     @Override
     public void run(String... args) throws Exception {
-        bookRepository.deleteAll();
-        userRepository.deleteAll();
-
-        userRepository.save(new User("Mateusz","Kitlinski","m.kitlinos@gmail.com","psw1"));
-        userRepository.save(new User("Patryk","Karwat","kupeczkas@gmail.com","psw2"));
-
-        bookRepository.save(new Book(new Book.Builder("Spring 1","Tomas", BookType.PAPER_BOOK)
-                .description("First book").groups(new ArrayList<>(Arrays.asList("PC","GAME")))).setStatus(StatusType.BOOKED));
-        bookRepository.save(new Book(new Book.Builder("Spring 2","Tomas", BookType.E_BOOK)
-                .description("Second book").groups(new ArrayList<>(Arrays.asList("PC","ART")))));
-        bookRepository.save(new Book(new Book.Builder("Spring 3","Krzys", BookType.AUDIO_BOOK)
-                .description("Third book").groups(new ArrayList<>(Arrays.asList("SMH","GAME")))));
-
+        databaseInitializer.dataInit();
     }
 
 
