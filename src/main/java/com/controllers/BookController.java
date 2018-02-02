@@ -79,10 +79,9 @@ public class BookController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String submitAddBookForm(String title,String author, String type,
-                                    String description, String groups, int copies){
+                                    String description, String groups){
 
         Book book = new Book(new Book.Builder(title,author,BookType.valueOf(type))
-                .copies(copies)
                 .description(description)
                 .groups(new ArrayList<>(Arrays.asList(groups.split(",")))));
         bookService.saveBook(book);
@@ -97,10 +96,9 @@ public class BookController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String submitUpdateBookForm(String title,String author, String type, String description,
-                                       String groups, int copies, @RequestParam("id") String id){
+                                       String groups, @RequestParam("id") String id){
 
         Book book = new Book(new Book.Builder(title,author,BookType.valueOf(type))
-                .copies(copies)
                 .description(description)
                 .groups(new ArrayList<>(Arrays.asList(groups.split(",")))));
         bookService.saveBook(book);

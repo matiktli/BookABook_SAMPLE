@@ -31,16 +31,16 @@
         </ul>
     </div>
     <div class="form-group">
-        <label for="copiesLabel"><spring:message code="book.table.copies"/></label>
-        <label class="form-control" id="copiesLabel">${book.copies}</label>
+        <label for="statusLabel"><spring:message code="book.table.status"/></label>
+        <label class="form-control" id="statusLabel">${book.status}</label>
     </div>
     <div class="form-group">
         <label for="descLabel"><spring:message code="book.table.description"/></label>
         <label class="form-control" id="descLabel">${book.description}</label>
     </div>
     <div>
-        <form:form method="GET" action="/">
-            <button type="submit" class="btn btn-success"><spring:message code="takeIt"/></button>
+        <form:form method="GET" action="/books/update?id=${book.id}">
+            <button type="submit" class="btn btn-success"><spring:message code="book.edit"/></button>
         </form:form>
     </div>
 </div>

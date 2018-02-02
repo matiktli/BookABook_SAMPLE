@@ -45,21 +45,22 @@ public class UserController{
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     public String submitRegistrationForm(User user, HttpServletRequest request) throws ServletException {
-        userService.addUser(user);
+        userService.saveUser(user);
         request.login(user.getEmail(),user.getPassword());
         return "redirect:/home";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
-    public String showUpdateForm(Model model,@RequestParam("id") String id){
-        model.addAttribute("user",userService.getUserById(id));
-        return "userAddOrUpdateForm";
+    public String showUpdateForm(@RequestParam("id") String id){
+        //model.addAttribute("user",userService.getUserById(id));
+        System.out.println("ID:" + id);
+        return "registerForm";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String submitUpdateForm(User user,@RequestParam("id") String id){
         user.setId(id);
-        userService.addUser(user);
+        userService.saveUser(user);
         return "redirect:/user/find?id="+user.getId();
     }
 

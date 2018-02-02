@@ -33,7 +33,7 @@ public class BookService {
     public Book getBookByTitle(String title){
         return bookRepository.findByTitle(title);
     }
-    public Book getBookById(String id){ return bookRepository.findOne(id);}
+    public Book getBookById(String id){ return bookRepository.findById(id);}
 
     public void saveBook(Book book){
         bookRepository.save(book);
@@ -50,4 +50,5 @@ public class BookService {
     public List<Book> getBooksByTitleOrAuthor(String title,String author){
         return bookRepository.findByTitleOrAuthor(title, author);
     }
+
 }
